@@ -1,0 +1,180 @@
+@media (max-width: 767px) {
+    @media (hover: none) {
+        .hero-section__cta-btn:hover,
+        .game-item__play-btn:hover {
+            background: $black;
+            color: $white;
+        }
+  
+        .game-preview:hover {
+            transform: none;
+            transition: none;
+        }
+    }
+    
+    .center {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .button {
+        width: 285px;
+        height: 55px;
+        font-size: 16px;
+        align-self: center;
+    }
+
+    .hero-section {
+        padding-top: 147px;
+        padding-bottom: 131px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-image: url(../img/star_mob.png), url(../img/Star-2mob.png), url(../img/Star-3mob.png);
+        background-repeat: no-repeat;
+        background-position: 100% 0px, 37px 64px, calc(100% - 34px) 557px;
+
+        &__title {
+            font-size: 40px;
+            line-height: 49px;
+        }
+
+        &__description {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        &__action-link {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        &__cta-btn {
+            display: none;
+
+            &-mobile {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 36px;
+                box-sizing: border-box;
+                border: 1px solid $black;
+                border-radius: 60px;
+                background: $black;
+                padding: 16px 103px;
+                text-align: center;
+                color: $white;
+                font-family: inherit;
+                max-width: 285px;
+                margin-left: 29px;
+                margin-right: 29px;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 141.69%;
+                letter-spacing: 0%;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+
+    .games-nav {
+        height: 50px;
+
+        &__item {
+            font-size: 16px;
+            line-height: 110%;
+            padding: 16px 27px;
+
+            &_first {
+                padding-left: 17px;
+            }
+        }
+
+        &__icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .games-overview {
+        display: none;
+    }
+
+    .games-collection {
+        background-image: none;
+        padding-bottom: 10px;
+
+        &__heading {
+            font-size: 40px;
+            line-height: 49px;
+            padding-bottom: 48px;
+        }
+
+        &__list {
+            row-gap: 24px;
+        }
+    }
+
+    .game-item {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: hidden;
+
+        &__info {
+            padding: 29px;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__visual {
+            height: 50%;
+            width: 100%;
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        &__title {
+            font-size: 32px;
+            line-height: 39px;
+            padding-bottom: 16px;
+        }
+
+        &__description {
+            font-size: 16px;
+            line-height: 20px;
+            padding-bottom: 32px;
+        }
+
+        &__play-btn {
+            width: 100%;
+            height: 55px;
+            font-size: 16px;
+            line-height: 141.69%;
+            letter-spacing: 0%;
+        }
+    }
+
+    .site-footer {
+        height: 100px;
+
+        &__copyright {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
