@@ -5,7 +5,7 @@
             background: $black;
             color: $white;
         }
-  
+
         .game-preview:hover {
             transform: none;
             transition: none;
@@ -40,10 +40,9 @@
             line-height: 49px;
         }
 
-        &__description {
-            font-size: 16px;
-            line-height: 20px;
-        }
+        
+
+
 
         &__action-link {
             font-size: 16px;
@@ -126,6 +125,10 @@
         align-items: center;
         overflow: hidden;
 
+        &:nth-child(even) {
+            flex-direction: column; /* Четные тоже вертикальные */
+        }
+
         &__info {
             padding: 29px;
             height: 50%;
@@ -164,6 +167,7 @@
             font-size: 16px;
             line-height: 141.69%;
             letter-spacing: 0%;
+            margin-top: 0;
         }
     }
 
