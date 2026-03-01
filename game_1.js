@@ -131,3 +131,99 @@ document.getElementById('playGame-2').addEventListener('click',
         alert(`🎮 Игра окончена! Правильных ответов: ${score}`);
     }
 );
+
+// Игра 3 "Переверни текст"
+
+document.getElementById('playGame-3').addEventListener('click', function() {
+    let userText = prompt('🎮 Введите слово или текст');
+    
+    if (userText === null) {
+        alert('Вы отменили ввод текста.');
+        return;
+    }
+    
+    if (userText.trim() === '') {
+        alert('Вы не ввели текст. Попробуйте снова.');
+        return;
+    }
+    
+    const reversedText = userText.split('').reverse().join('');
+    alert(`🎮 Перевернутый текст: ${reversedText}`);
+});
+
+// Игра 4 «Викторина»
+document.getElementById('playGame-5').addEventListener('click', function() {
+    
+    const quiz = [
+        {
+            question: "Какого цвета небо?",
+            options: ["1. Красный", "2. Синий", "3. Зеленый"],
+            correctAnswer: 2 // номер правильного ответа
+        },
+        {
+            question: "Сколько дней в неделе?",
+            options: ["1. Шесть", "2. Семь", "3. Восемь"],
+            correctAnswer: 2
+        },
+        {
+            question: "Сколько у человека пальцев на одной руке?",
+            options: ["1. Четыре", "2. Пять", "3. Шесть"],
+            correctAnswer: 2
+        }
+    ];
+
+    let totalCorrect = 0;
+    
+    alert("🎮 Добро пожаловать в викторину! Вам будет предложено 3 вопроса. Удачи!");
+
+    for (let itemIndex = 0; itemIndex < quiz.length; itemIndex++) {
+        
+        const currentItem = quiz[itemIndex];
+        
+        let messageForUser = `🎮 ВОПРОС № ${itemIndex + 1}`;
+        messageForUser += `${currentItem.question}\n\n`;
+        messageForUser += "Варианты ответа:\n";
+        
+        for (let opt = 0; opt < currentItem.options.length; opt++) {
+            messageForUser += `${currentItem.options[opt]}\n`;
+        }
+        
+        const playerResponse = prompt(messageForUser);
+        
+        // Обработка случая, когда пользователь нажал "Отмена"
+        if (playerResponse === null) {
+            const wantExit = confirm("🎮 Вы действительно хотите прервать викторину?");
+            if (wantExit) {
+                alert("🎮 Жаль, что вы уходите. Возвращайтесь в другой раз!");
+                return;
+            } else {
+                itemIndex--;
+                continue;
+            }
+        }
+
+        const answerAsNumber = Number(playerResponse);
+        
+        if (!Number.isInteger(answerAsNumber) || answerAsNumber < 1 || answerAsNumber > currentItem.options.length) {
+            alert(` Ошибка! Нужно ввести число от 1 до ${currentItem.options.length}. Попробуйте еще раз.`);
+            itemIndex--; 
+            continue;
+        }
+
+        if (answerAsNumber === currentItem.correctAnswer) {
+            totalCorrect++;
+            alert(" Абсолютно верно! +1 балл");
+        } else {
+            const correctText = currentItem.options[currentItem.correctAnswer - 1];
+            alert(` К сожалению, неверно.\nПравильный ответ: ${correctText}`);
+        }
+    }
+
+    const totalQuestions = quiz.length;
+    const percentResult = Math.round((totalCorrect / totalQuestions) * 100);
+    
+    let finalResult = "\n🎮 ВИКТОРИНА ЗАВЕРШЕНА\n";
+    finalResult += ` Правильных ответов: ${totalCorrect}\n`;
+
+    alert(finalResult);
+});
