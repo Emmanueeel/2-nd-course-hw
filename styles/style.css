@@ -136,6 +136,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 h3 {
@@ -170,6 +171,10 @@ h3 {
   font-weight: 600;
   line-height: 32px;
   color: rgb(32, 32, 39);
+  text-decoration: underline;
+}
+.hero-section__action-link:hover {
+  text-decoration: none;
 }
 .hero-section__cta-btn {
   display: inline-flex;
@@ -221,6 +226,11 @@ h3 {
   text-transform: uppercase;
   padding: 27px 51px;
   white-space: nowrap;
+  color: rgb(32, 32, 39);
+  transition: color 0.3s ease;
+}
+.games-nav__item:hover {
+  color: rgba(0, 0, 0, 0.7);
 }
 .games-nav__item_first {
   padding-left: 19px;
@@ -273,10 +283,12 @@ h3 {
   flex-direction: column;
   gap: 32px;
 }
+.games-overview__game-link {
+  display: block;
+  transition: transform 0.3s ease;
+}
 .games-overview__game-link:hover {
   transform: scale(1.07);
-  transition: 1s;
-  cursor: pointer;
 }
 
 .game-preview {
@@ -288,12 +300,10 @@ h3 {
   transition: min-height 0.3s ease;
   width: 100%;
   max-width: 100%;
+  overflow: hidden;
 }
 .game-preview__details {
-  padding-top: 32px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 36px;
+  padding: 32px 32px 36px;
 }
 .game-preview__id {
   font-size: 16px;
@@ -306,6 +316,7 @@ h3 {
   border-radius: 52.58px;
   background: rgb(247, 247, 247);
   padding: 9px 15px;
+  margin: 0;
 }
 .game-preview__name {
   font-size: 32px;
@@ -315,6 +326,7 @@ h3 {
   color: rgb(32, 32, 39);
   font-family: inherit;
   padding-top: 16px;
+  margin: 0;
 }
 .game-preview__thumbnail {
   width: 100%;
@@ -322,6 +334,7 @@ h3 {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 30px 30px 0 0;
+  display: block;
 }
 
 .games-collection {
@@ -337,7 +350,7 @@ h3 {
   line-height: 78px;
   color: rgb(255, 255, 255);
   padding-top: 46px;
-  padding-bottom: 40px;
+  padding-bottom: 72px;
 }
 .games-collection__list {
   display: flex;
@@ -353,18 +366,24 @@ h3 {
   box-shadow: 0px 20px 67px -12px rgba(0, 0, 0, 0.13);
   background: rgb(255, 255, 255);
   overflow: hidden;
+  flex-direction: row;
+  /* Четные элементы*/
 }
-.game-item_reversed {
+.game-item:nth-child(even) {
   flex-direction: row-reverse;
 }
 .game-item__info {
   flex: 0 0 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   padding: 48px;
 }
 .game-item__title {
+  text-align: left;
+  text-wrap: balance;
+  max-inline-size: 100ch;
+  white-space: normal;
   font-size: 48px;
   font-weight: 700;
   line-height: 59px;
@@ -374,7 +393,8 @@ h3 {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-  padding-bottom: 36px;
+  padding-bottom: 0;
+  margin: 0;
 }
 .game-item__play-btn {
   width: 247px;
@@ -386,11 +406,18 @@ h3 {
   color: rgb(255, 255, 255);
   font-family: inherit;
   cursor: pointer;
+  border: 1px solid rgb(32, 32, 39);
   transition: all 0.3s ease;
+  margin-top: 36px;
 }
 .game-item__play-btn:hover {
   background: rgb(255, 255, 255);
   color: rgb(32, 32, 39);
+  border-color: rgb(32, 32, 39);
+}
+.game-item__play-btn:focus {
+  outline: 2px solid rgb(32, 32, 39);
+  outline-offset: 2px;
 }
 .game-item__visual {
   flex: 0 0 50%;
@@ -404,18 +431,21 @@ h3 {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  display: block;
 }
 
 .site-footer {
   height: 150px;
   background-color: rgb(188, 236, 48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .site-footer__copyright {
   font-size: 24px;
   font-weight: 600;
   line-height: 29px;
-  text-align: center;
-  padding-top: 60px;
+  margin: 0;
 }
 
 @media (max-width: 1200px) {
@@ -586,10 +616,6 @@ h3 {
     font-size: 40px;
     line-height: 49px;
   }
-  .hero-section__description {
-    font-size: 16px;
-    line-height: 20px;
-  }
   .hero-section__action-link {
     font-size: 16px;
     line-height: 20px;
@@ -659,6 +685,9 @@ h3 {
     align-items: center;
     overflow: hidden;
   }
+  .game-item:nth-child(even) {
+    flex-direction: column; /* Четные тоже вертикальные */
+  }
   .game-item__info {
     padding: 29px;
     height: 50%;
@@ -693,6 +722,7 @@ h3 {
     font-size: 16px;
     line-height: 141.69%;
     letter-spacing: 0%;
+    margin-top: 0;
   }
   .site-footer {
     height: 100px;
