@@ -227,3 +227,62 @@ document.getElementById('playGame-5').addEventListener('click', function() {
 
     alert(finalResult);
 });
+
+// Игра 5 «Камень, ножницы, бумага»
+document.getElementById('playGame-4').addEventListener('click',
+    function rockPaperScissors() {
+        const gameOptions = ["камень", "ножницы", "бумага"];
+        let gameContinues = true;
+
+        while (gameContinues) {
+            let playerChoice = prompt('🎮 Выберите цифру:\n1 - камень\n2 - ножницы\n3 - бумага');
+
+            if (playerChoice === null) {
+                alert("🎮 Игра окончена! Поиграем в другой раз.");
+                gameContinues = false;
+                break;
+            }
+
+            const choiceNumber = parseInt(playerChoice);
+            
+            if (isNaN(choiceNumber) || choiceNumber < 1 || choiceNumber > 3) {
+                alert("🎮 Некорректный ввод. Нужно ввести число 1, 2 или 3");
+                continue; 
+            }
+
+            playerChoice = gameOptions[choiceNumber - 1];
+
+            function getComputerChoice() {
+                const randomIndex = Math.floor(Math.random() * gameOptions.length);
+                return gameOptions[randomIndex];
+            }
+
+            function determineWinner(playerChoice, computerChoice) {
+                if (playerChoice === computerChoice) {
+                    return '🎮 Ничья!';
+                }
+
+                if (
+                    (playerChoice === "камень" && computerChoice === "ножницы") ||
+                    (playerChoice === "ножницы" && computerChoice === "бумага") ||
+                    (playerChoice === "бумага" && computerChoice === "камень")
+                ) {
+                    return '🎮 Поздравляем! Вы выиграли!';
+                } else {
+                    return '🎮 Вы проиграли. Выиграл компьютер!';
+                }
+            }
+
+            const computerChoice = getComputerChoice();
+            const gameResult = determineWinner(playerChoice, computerChoice);
+
+            alert(`Ваш выбор: ${playerChoice} (${choiceNumber});
+            Выбор компьютера: ${computerChoice};
+            Результат игры: ${gameResult}`);
+
+            gameContinues = confirm("🎮 Хотите сыграть ещё раз?");
+        }
+
+        alert("🎮 Спасибо за игру! До новых встреч!");
+    }
+)
